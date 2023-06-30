@@ -1,0 +1,79 @@
+
+//Pseudocode: Bellman Ford Algorithm
+
+Input-> A weighted graph and a source node (with detect negative cycles) and a destination node
+Output-> shortest distance from source node to all other node.
+
+
+/**
+
+    u ----> v
+
+    d[u] + c(u,v) < d[v]
+ => d[v] = d[u] + c(u,v)
+
+ time complexity-> o(|V| * |E|) or O(n*m)
+ space complexity-> o(n)
+
+ n is number of nodes
+ m is number of edges
+
+
+*/
+
+ - Create a distance array "d" with all values to infinity
+ - Create a parent array "p"
+ - d[source] = 0
+
+ - negative_cycle = false;
+ - last_updated_node = -1
+
+ -for i=1 to n:
+    // relax edge "e"
+    - for all edge e(u,v,w):
+        - if d[u] + w < d[v]
+           - d[v] = d[u] + w
+           - p[v] = u
+
+           - if i == n
+           - negative_cycle = true;
+           - last_updated_node = v  // n-th iteration updated node.that mean its part of negative cycle
+                                    // node that can be reached from the negative cycle
+
+// path printing
+
+- if negative_cycle == false
+    - print the distance array "d"
+    - selected_node = destination_node
+    - declare a vector "path"
+- while true
+    - path.push_back(selected_node)
+    - if selected_node == source
+        - break
+    - selected_node = parent[selected_node]
+    - reverse the vector path
+    - print the path
+- else
+    - print weather negative cycle exists.
+    - selected_node = last_updated_node
+    - for i = 1 to n-1:
+         - selected_node = parent[selected_node] // n-1 times parent trace or track
+
+        - first_node = selected_node
+        - declare a vector "cycle"
+        - cycle.push_back(selected_node) // until we back to selected_node we trace the parent
+- while true
+        - selected_node = parent[selected_node] // track the parent and push to vector
+        - cycle.push_back(selected_node)
+        - if selected_node == first_node
+            break
+
+    - reverse the vector "cycle"
+    - print the cycle
+
+
+
+
+
+
+

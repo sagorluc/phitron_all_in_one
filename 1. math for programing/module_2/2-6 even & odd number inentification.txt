@@ -1,0 +1,13 @@
+EVEN AND ODD NUMBER IDENTIFICATION 
+
+EVEN : JOR SONGKHA [0,2,4,6,8,10,12....]
+
+ODD : BIJOR SONGKHA [1,3,5,7,9,11,13...]
+
+HOW TO CHECK : 
+
+_Divide the number with 2 
+
+_if remainder is 0, even! otherwise odd!
+
+dividing by 2 sounds binery 

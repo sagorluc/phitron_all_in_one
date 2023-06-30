@@ -1,0 +1,26 @@
+
+							question-3
+						-----------------------
+
+Simulate Bellman-Ford Algorithm on the following graph? Detect if there exists any negative cycle. Show simulation steps. No code is required.
+
+A D 4
+A C 2
+C D 1
+C E 1
+D B 2
+D E -1
+E B 3
+
+No, there are no negative cycles in this graph.
+
+We can use the Bellman-Ford algorithm to check if there are negative cycles in the graph. The algorithm works by relaxing the edges repeatedly and checking if any vertices can be relaxed further. If we can relax a vertex after N-1 iterations, where N is the number of vertices in the graph, then the graph has a negative cycle.
+
+Starting from the source vertex A, the algorithm would proceed as follows:
+
+After the first iteration, we have the following distances: A: 0, C: 2, D: 4, E: 3, B: infinity
+After the second iteration, we have the following distances: A: 0, C: 2, D: 3, E: 2, B: 5
+After the third iteration, we have the following distances: A: 0, C: 2, D: 3, E: 2, B: 5
+Since we did not find any shorter paths in the third iteration, we can conclude that the algorithm has converged and there are no negative cycles in the graph.
+
+Therefore, there are no negative cycles in the given graph data.

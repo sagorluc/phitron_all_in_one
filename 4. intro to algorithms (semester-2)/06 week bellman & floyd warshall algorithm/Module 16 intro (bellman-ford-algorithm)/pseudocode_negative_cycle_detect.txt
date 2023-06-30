@@ -1,0 +1,53 @@
+
+//Pseudocode: Bellman Ford Algorithm
+
+Input-> A weighted graph and a source node (with detect no negative cycles)
+Output-> shortest distance from source node to all other node.
+
+
+/**
+
+    u ----> v
+
+    d[u] + c(u,v) < d[v]
+ => d[v] = d[u] + c(u,v)
+
+ time complexity-> o(|V| * |E|) or O(n*m)
+ space complexity-> o(n)
+
+ n is number of nodes
+ m is number of edges
+
+
+*/
+
+ - Create a distance array "d" with all values to infinity
+ - d[source] = 0
+
+ - negative_cycle = false;
+
+ -for i=1 to n: // O(n)
+    // relax edge "e"
+    - for all edge e(u,v,w): //O(m) full nested loop time complexity-> O(n * m)
+        - if d[u] + w < d[v]
+             d[v] = d[u] + w
+
+             - if i == n
+             - negative_cycle = true;
+
+  print weather negative cycle exists or not.
+  print the distance array "d" // O(n)
+
+
+  analysis complexity
+----------------------
+
+ O(n) + O(1) + O(n * m) + O(n)
+
+ => O(n*m)
+
+ => O(|V| * |E|)
+
+ Its time complexity in worst case O(n^3)
+ if the graph has n node and n edge then its time complexity O(n^2)
+

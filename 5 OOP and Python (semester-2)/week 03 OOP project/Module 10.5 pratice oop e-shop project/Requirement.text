@@ -1,0 +1,16 @@
+User: email, password
+1. customer
+2. seller
+
+customer(User)
+1. creat_account()
+2. login()
+3. see_all_produce()
+4. place_order()
+
+seller(User)
+1. creat_account()
+2. login()
+3. publish_product()
+4. stock_monitor()
+

@@ -1,0 +1,20 @@
+							question - 1
+						------------------------
+“It is impossible to get the shortest distance to a node in a graph with negative cycles” - is this statement correct? Explain why or why not with an example.
+
+ANS:It is impossible to get the shortest distance to a node in a graph with negative cycles.this statement is correct.explain in the dwon below with an example.
+
+A ---> B --> 1
+B ---> C --> 2
+C ---> D --> 3
+D ---> B --> -5
+
+NEGATIVE CYCLIC GRAPH
+
+Negative cycles are cycles in a graph where the sum of the weights of the edges that make up the cycle is negative.In such graphs, the concept of shortest distance is not well-defined because we can keep going around the cycle, decreasing the distance indefinitely.
+
+to understand why,let's consider an example of a graph with a negative cycle.look at the above graph data.
+
+In this graph, we have a negative cycle B-->C-->D-->B, with a total weight of -5. if we start at node A and try to find the shortest distance to node B, we can follow the path "A-->B", which has a weight of 1.however we can also follow the path "A-->B-->C-->D--B" which has a weight of -2. we can keep going around the cycle, decreasig the weight as much as we want.therefore, the concept of shortest distance to node B is not-well defined in this graph.
+
+to sum up, the graphs with negative cycles, the shortest path problem does not have a unique solution, and it is not possible to find the shortest distance to a node.

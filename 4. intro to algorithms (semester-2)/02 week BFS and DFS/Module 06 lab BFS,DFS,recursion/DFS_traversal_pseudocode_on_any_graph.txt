@@ -1,0 +1,18 @@
+
+// for any kind of graph traverse by DFS traversal
+// visited_array
+void DFS(int node)
+{
+   cout<< node <<"\n";
+
+   visited_array[node] = 1;
+
+   for all adj_node of node:
+        if(visited_array[adj_node] == 0)
+            dfs(adj_node);
+
+
+--> time complexity- O(v + e)
+--> space complexity- O(v)
+
+}

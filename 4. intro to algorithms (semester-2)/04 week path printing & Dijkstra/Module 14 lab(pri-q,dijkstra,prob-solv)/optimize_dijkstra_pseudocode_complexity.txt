@@ -1,0 +1,38 @@
+
+// Dijkstra algorithem optimize version
+// input -> a weighted graph and a source.
+// output -> distance of all nodes from the source.
+
+/**
+ if u -> v got edges
+
+ d[u] + c(u,v) < d[v]
+ d[v] = d[u] + c(u,v);
+
+*/
+    space complexity -> O(n) + O(n) + O(1) = O(m)
+    time complexity -> O(n) + O(E log E) + O(E log E) = O(|E| log |E|)
+                                                      = O(|E| log |V^2|) // use algebra
+                                                      = O(2|E| log |V|)
+                                                      = O(|E| log |v|)
+    - create a distance array "d"
+    - initialize all values of "d" to infinity
+    - d[source] = 0;
+    - create a visited array and mark all nodes as unvisited
+    - take an empty reverse priority_queue "pq"
+    - pq.push({0, src})
+
+    - while the priority_queue is not empty.-> O(E)
+        - pick the node with the minimum distance value => head_distance, head = pq.top().senond
+        - pq.pop() -> O(log E)
+        - if visited[head] == 1: ignore(continue)
+        - if visited[head] = 1;
+
+        - for all adj_node of head -> O(E)
+            - if d[head] + c(head, adj_node) < d[adj_node]
+            - d[adj_node] = d[head] + c(head, adj_node)
+            - pq.push({d[adj_node], adj_node}) -> O(log E)
+
+        output array of "d".
+
+

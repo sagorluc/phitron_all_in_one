@@ -1,0 +1,31 @@
+
+pseudocode of DFS traversa
+-> DFS travers on binary tree
+void dfs(node)
+{
+    cout<< node <<"\n";
+   // base case
+    if the node does not have any chilled.(leaf node)
+        return;
+
+   // general case
+    dfs(node->left_chilled);
+    dfs(node->right_chilled);
+
+}
+
+-> DFS travers on multipule tree (non binary tree)
+void dfs(node)
+{
+    cout<< node <<"\n";
+
+    // base case
+    if the tree does not have any chilled.
+        return;
+
+    // general case
+    for all chilled of node:
+       dfs(chilled);
+}
+
+

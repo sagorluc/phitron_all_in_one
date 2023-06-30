@@ -1,0 +1,21 @@
+-------------------------
+    High LEVEL AREA
+-------------------------
+School system devolopment
+--------------------------
+1. student management
+2. teacheer management
+3. cafeteria
+4. sports management
+5. club management
+6. event management
+7. library management
+8. assessment
+
+---------------------------
+CORE FUNCTIONALITY
+
+1. there will be a classroom consisting the multiple students
+2. student can enroll multiple classes
+3. teacher will take classes, they will take exam,give grade exam
+4. system will generate the overall grade
