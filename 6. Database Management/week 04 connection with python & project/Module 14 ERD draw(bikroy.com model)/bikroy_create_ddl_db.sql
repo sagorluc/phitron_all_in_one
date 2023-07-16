@@ -1,4 +1,7 @@
 
+-- -- -- -- START FROM HERE -- -- --
+CREATE DATABASE phitron;
+USE phitron;
 -- -- -- -- LOCATION-- -- -- 
 
 CREATE TABLE location
