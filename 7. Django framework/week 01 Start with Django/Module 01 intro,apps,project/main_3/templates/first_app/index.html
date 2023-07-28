@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main_3 first app</title>
+</head>
+<body>
+    <h1>this is main_3 project first app home page</h1>
+    <a href="http://phitron.io">link of phitron</a>
+    <h3>author name: {{ author }}</h3>
+
+    <!-- if else condition -->
+    {% if age >= 18 %}
+    <h3>He is adult</h3>
+    {% else %}
+    <h3>He is not adult</h3>        
+    {% endif %}
+
+    {% if marks >= 80  and marks <= 100 %}
+    <h3>you get GPA-5</h3>
+    {% elif marks >= 70 and marks <= 79 %}
+    <h3>you get GPA-4</h3>
+    {% elif marks >= 40 and marks <= 69 %}
+    <h3>you get GPA-2 to 3</h3>
+    {% else %}
+    <h3>you fail the exam</h3>
+    {% endif %}
+
+    <!-- loop -->
+    <table border= 2px width= 500 align= center>
+        <tr align= center>
+            <th>ID</th>
+            <th>Course</th>
+            <th>Teacher</th>
+        </tr>
+
+        {% for i in cour %}
+        <tr align= center>
+            <td>{{ i.id }}</td>
+            <td>{{ i.course }}</td>
+            <td>{{ i.teacher }}</td>
+        </tr>
+        
+        {% endfor %}
+
+    </table>
+
+            <!-- filtering DTL (Django Template Language) -->
+
+        <!-- add value -->
+        <h3>Selary after add: {{ del.selary | add:'200' }}</h3>
+
+        <!-- Divisible Check -->
+        <h3>is the salary divisible: {{del.selary | divisibleby:'5'}} </h3>
+
+        <!-- length -->
+        <h3>Length of name: {{del.name | length}} </h3>
+
+        <!-- word count -->
+        <h3>Total word of the name: {{del.name | wordcount}} </h3>
+
+        <!-- turncate word -->
+        <h3>Total word of the name: {{del.blog | truncatewords:"5"}} </h3>
+        <h3>Total word of the name: {{del.blog | truncatechars:"20"}} </h3>
+
+        <!-- make list -->
+        <h3>character list of name: {{author | make_list}} </h3>
+
+        <!-- upper case -->
+        <h3>convert into upper: {{author | upper}} </h3>
+        <!-- lower case -->
+        <h3>convert into lower: {{author | lower}} </h3>
+
+        <!-- join list -->
+        <h3>join arry and list: {{del.list | join:','}} </h3>
+
+
+
+</body>
+</html>
