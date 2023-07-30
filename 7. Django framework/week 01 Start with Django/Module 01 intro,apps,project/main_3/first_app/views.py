@@ -34,8 +34,9 @@ def app(request):
             saepe aspernatur exercitationem. Voluptatem, accusamus?'
     }
     
-    return render(request, 'first_app/index.html', {'author': 'phitron', 
+    return render(request, 'index.html', {'author': 'phitron', 
                                                     'age': 19, 
                                                     'marks': 55, 
                                                     'cour': course,
                                                     'del': details})
+    

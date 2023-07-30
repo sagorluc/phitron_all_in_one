@@ -1,11 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css_files/styles_home.css' %}">
     <title>Home</title>
 </head>
 <body>
     <h1>Hellow this is from main_3 project home page</h1>
+
+    <img src="{% static 'images/cn.jpeg' %}" alt="cn tower canada">
+    <img src="{% static 'images/nature.jpg' %}" alt="nature photo">
+
+
+    <script src='{% static 'js_files/index.js' %}'></script>
 </body>
 </html>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main_3 first app</title>
+    <link rel="stylesheet" href="{% static 'app_css/app_home.css' %}">
 </head>
 <body>
     <h1>this is main_3 project first app home page</h1>
@@ -26,6 +28,9 @@
     {% else %}
     <h3>you fail the exam</h3>
     {% endif %}
+
+    <img src="{% static 'app_images/girl.jpg' %}" alt="girl with nature">
+    <img src="{% static 'app_images/feild.jpg' %}" alt="nature">
 
     <!-- loop -->
     <table border= 2px width= 500 align= center>

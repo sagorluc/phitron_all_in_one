@@ -1,0 +1,21 @@
+<!-- INHERITE FROM BASE.HTML -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% load first_tags %}
+{% load first_tags %}
+{% block title %}About{% endblock title %}
+{% block join_css %}
+<link rel="stylesheet" href="{% static 'css_files/about.css' %}">
+{% endblock join_css %}
+
+<!-- all content should be write here (body) -->
+{% block content %} {{block.super}} Hello From About Page
+<h1> {{author}} </h1>
+<h1> {{author |change_name:'change'}} </h1> <!-- use custom filter -->
+<h1> {{author |change_name:'title'}} </h1>  <!-- use custom filter -->
+
+<!-- call the custom tags function -->
+{% show_courses %}
+
+{% endblock content %}
