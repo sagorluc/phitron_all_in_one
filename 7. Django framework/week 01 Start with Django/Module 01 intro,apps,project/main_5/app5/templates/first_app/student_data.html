@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} <!-- load the crispy forms -->
+{% block title %}Student Data{% endblock title %}
+{% block content %}
+Student Data
+<div style="width: 50%; height: 500px; margin: auto" class="pt-5">
+    <form action="" method="post" enctype='multipart/form-data'> 
+        
+        {% csrf_token %}
+        {{forms|crispy}} <!-- as_p work like brake the line --> 
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h3>Name: {{name}} </h3>
+    <h3>Email: {{email}} </h3>  
+    <h3>Age: {{age}} </h3>  
+    <h3>File: {{file}} </h3>  
+    <h3>Text: {{text}} </h3>  
+    <h3>Password: {{pass1}} </h3>  
+    <h3>Confirm Paasword: {{pass2}} </h3>  
+
+    
+</div>
+
+{% endblock content%}

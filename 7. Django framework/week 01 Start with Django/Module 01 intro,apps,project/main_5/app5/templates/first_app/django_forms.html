@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} <!-- load the crispy forms -->
+{% block title %}Django Forms{% endblock title %}Django Forms
+{% block content %}
+
+<div style="width: 50%; height: 500px; margin: auto" class="pt-5">
+    <form action="" method="post" enctype="multipart/form-data"> 
+        <!-- must added (enctype="multipart/form-data") for file uploading -->
+        
+        {% csrf_token %}
+        {{forms|crispy}} <!-- as_p work like brake the line --> 
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h3>Name: {{name}} </h3>
+    <h3>File: {{file}} </h3> 
+    <h3>Email: {{email}} </h3>  
+    <h3>Age: {{age}} </h3>
+    <h3>Weight: {{weight}} </h3>
+    <h3>Balance: {{balance}} </h3>
+    <h3>Date-Of-Birth: {{birthday}} </h3>
+    <h3>Appoinment: {{appoinment}} </h3>
+    <h3>Choice: {{size}} </h3>
+    <h3>Multiple Choice: {{mul_size}} </h3> 
+    <h3>Address: {{widget}} </h3> 
+    
+</div>
+
+{% endblock content%}
