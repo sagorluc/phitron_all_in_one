@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Home7{% endblock title %}
+{% block content %}
+{% load crispy_forms_tags %}
+    <h1>This is Home page of app7 </h1>
+
+    <div style= "width: 50%; margin: auto;">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <!-- <button class="btn btn-primary" type="submit">Submit</button> -->
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+    {{block.super}}
+{% endblock content %}
