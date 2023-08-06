@@ -4,6 +4,7 @@ from django.db import models
 
                 # Models Inheritance and type of models inheritance 
                 # 3 types of model inheritance 
+        #==============================================================
 
 # 1. abstract base inheritance
 # 2. multitable inheritance
@@ -48,7 +49,7 @@ class Me(Friend): # tow table got same data
         
         
                     # Relationship in Models Or Database Table
-                    # =========================================
+            # ========================================================
 
 # 1. One to One Relationship
 # 2. One to Many Or Many to One Relationship
