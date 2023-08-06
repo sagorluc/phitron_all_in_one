@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Show Data{% endblock title %}
+{% block content %}
+<h1 style="text-align: center; margin: auto; color: green;">
+    Show Data!!
+</h1><br>
+
+<div>
+    <table style="border: 2px solid green; width: 50%; margin: auto; text-align: center;">
+            <h1 style="text-align: center; color: blue; padding: 15px">
+                Total Student of {{teacher}} Sir 
+            </h1>
+
+            <tr style="border: 2px;">
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Roll</th>
+                <th>Student Class</th>
+            </tr>
+            
+        {% for stud in s_names %}
+            <tr>
+                <td>{{stud.id}} </td>
+                <td>{{stud}} </td> <!-- student name -->
+                <td>{{stud.roll}} </td> 
+                <td>{{stud.class_name}} </td>
+            </tr>
+        {% endfor %}
+    
+    </table>
+    <br><br>
+    <table style="border: 2px solid green; width: 50%; margin: auto; text-align: center;">
+            <h1 style="text-align: center; color: blue; padding: 15px">
+                Total Teachers of {{student_name}}  
+            </h1>
+
+            <tr style="border: 2px;">
+                <th>Teacher Name</th>
+                <th>Student M</th>
+                <th>Subject</th>
+                <th>Mobile NO:</th>
+            </tr>
+            
+        {% for teacher in teachers %}
+            <tr>
+                <td>{{teacher}} </td> <!-- teacher name -->
+                <td>{{teacher.sutdent_m}} </td> 
+                <td>{{teacher.subject}} </td> 
+                <td>{{teacher.mobile}} </td> 
+            </tr>
+        {% endfor %}
+    
+    </table>
+
+
+</div>
+{% endblock content %}
