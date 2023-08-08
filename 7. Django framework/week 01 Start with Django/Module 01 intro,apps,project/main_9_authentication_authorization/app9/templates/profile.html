@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1 style="width: 50%; margin: auto; color: brown;">
+    Welcome to Profile page !!
+</h1> <br>
+<h1 style="width: 50%; margin: auto; color: brown;">Hello: {{user}} </h1>
+
+<!-- messages area -->
+{% if messages %}
+{% for mss in messages %}
+<h1 style="width: 50%; margin: auto; color: green;" style="text-align: center"> 
+    {{mss}} 
+</h1>
+{% endfor %}   
+{% endif %} <br><br>
+
+ <!-- all the button area -->
+<p style="width: 50%; margin: auto; color: blue;">
+    <a class="btn btn-info" href="{% url 'change_pass' %}">
+        Change Password
+    </a>
+
+    <a class="btn btn-warning" href="{% url 'change_pass2' %}">
+        Change Password Without Old Password
+    </a>
+
+    <a class="btn btn-primary" href="{% url 'change_data' %}">
+        Change User Data
+    </a>
+
+</p>
+
+{% endblock content %}

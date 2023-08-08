@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}SignUp{% endblock title %}
+
+<style>
+    .success{
+        color: green;
+    }
+</style>
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<h1>This is signup page</h1><br><br>
+
+ <!-- messages area -->
+    {% if messages %}    
+    {% for ms in messages %}    
+        <!-- <span {% if ms.tags %} class="{{ms.tags}}" {% endif %} >{{ms}}</span> -->
+        <h1 style="width: 50%; margin: auto; color: green" style="text-align: center">
+             {{ms}} 
+        </h1>
+    {% endfor %}
+    {% endif %} <br><br>
+
+<div style="width: 50%; margin: auto; ">
+    <form  method= 'post' novalidate>
+        {% csrf_token %}
+    <!-- data forms -->
+        <!-- {{forms|crispy}} -->
+        {% if forms %}
+        
+        {% for frm in forms %}
+            {{frm.label_tag}}
+            {{frm}}
+            {{frm.errors|striptags}} <!-- striptags is use for help_text -->
+
+        {% endfor %} <br>
+            <button class="btn btn-primary" type="submit">SignUp</button> <br><br>
+            <span><a href="{% url 'signin' %}">Already Have An Account</a></span>
+        {% else %}
+        <h1>No Forms Founded</h1>
+        
+        {% endif %}
+
+    </form>
+</div>
+
+{% endblock content %}

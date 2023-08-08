@@ -72,7 +72,7 @@ class Passpost(models.Model):
     
 # 2. One to Many Or Many to One Relationship
 class Post(models.Model):
-    user = models.ForeignKey(Person, on_delete= models.SET_NULL, null= True)
+    user = models.ForeignKey(Person, on_delete= models.SET_NULL, null= True, related_name= 'posts')
     post_caption = models.CharField(max_length= 50)
     post_details = models.TextField()
 

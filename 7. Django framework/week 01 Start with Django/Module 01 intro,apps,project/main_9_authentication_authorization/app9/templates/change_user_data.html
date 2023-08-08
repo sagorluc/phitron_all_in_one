@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Change Data{% endblock title %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1 style="width: 50%; margin: auto; color: green;">Change User Data!!</h1> <br><br>
+
+    
+        <form  method= 'POST' style="width: 50%; margin: auto;" novalidate>
+            {% csrf_token %}
+             
+         <!-- messages area -->
+             {% if messages %}
+                {% for erm in messages %}
+                <h3 class="bg-primary text-white p-3 rounded-pill" style="text-align: center">
+                    Updated: {{erm}} 
+                </h3>
+                {% endfor %}
+            {% endif %}
+                
+         <!--
+            this is backend error messages
+            {% if forms.non_field_errors %}
+            
+            {% for er in forms.non_field_errors %}
+                <p class="bg-danger text-white p-3">Error: {{er}} </p>
+            {% endfor %}
+            
+            {% endif %}
+        -->
+        
+         <!-- get data forms -->
+            <!-- {{forms|crispy}} -->
+            {% for frm in forms %}
+            {{frm.label_tag}}
+            {{frm}}
+            {{frm.errors|striptags}}
+            {% endfor %} <br>
+            <button class="btn btn-warning" type="submit">Update Data</button><br><br>
+            
+        </form>
+
+        <!-- back to profile page -->
+        <p style="width: 50%; margin: auto; color: blue;">
+            <a class="btn btn-info" href="{% url 'profile' %}">
+                Back
+            </a>
+        </p>
+{% endblock content %}

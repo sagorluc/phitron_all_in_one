@@ -6,6 +6,8 @@
 </h1><br>
 
 <div>
+
+<!-- Many to Many Relationship-->
     <table style="border: 2px solid green; width: 50%; margin: auto; text-align: center;">
             <h1 style="text-align: center; color: blue; padding: 15px">
                 Total Student of {{teacher}} Sir 
@@ -29,6 +31,7 @@
     
     </table>
     <br><br>
+
     <table style="border: 2px solid green; width: 50%; margin: auto; text-align: center;">
             <h1 style="text-align: center; color: blue; padding: 15px">
                 Total Teachers of {{student_name}}  
@@ -47,6 +50,30 @@
                 <td>{{teacher.sutdent_m}} </td> 
                 <td>{{teacher.subject}} </td> 
                 <td>{{teacher.mobile}} </td> 
+            </tr>
+        {% endfor %}
+    
+    </table>
+    <br><br>
+
+<!-- One to Many Relationship-->
+    <table style="border: 2px solid green; width: 50%; margin: auto; text-align: center;">
+            <h1 style="text-align: center; color: blue; padding: 15px">
+                Total Post of {{person}}  
+            </h1>
+
+            <tr style="border: 2px;">
+                <th>User Name</th>
+                <th>Captions</th>
+                <th>Post Details</th>
+                
+            </tr>
+            
+        {% for post in  posts %}
+            <tr>
+                <td>{{post.user}} </td> 
+                <td>{{post.post_caption}} </td> 
+                <td>{{post.post_details}} </td> 
             </tr>
         {% endfor %}
     
