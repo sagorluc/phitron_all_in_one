@@ -10,7 +10,9 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<h1>This is signup page</h1><br><br>
+<h1 style="width: 30%; margin: auto; color: green; margin-top: 30px;">
+    SignUp Page !!
+</h1>
 
  <!-- messages area -->
     {% if messages %}    
@@ -22,7 +24,7 @@
     {% endfor %}
     {% endif %} <br><br>
 
-<div style="width: 50%; margin: auto; ">
+<div style="width: 30%; margin: auto; ">
     <form  method= 'post' novalidate>
         {% csrf_token %}
     <!-- data forms -->

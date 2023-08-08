@@ -3,19 +3,19 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-<h1 style="width: 50%; margin: auto; color: green;">LogIn !!</h1> <br><br>
+<h1 style="width: 30%; margin: auto; color: green;">LogIn !!</h1> <br><br>
 
     
-        <form  method= 'POST' style="width: 50%; margin: auto;" novalidate>
+        <form  method= 'POST' style="width: 30%; margin: auto;" novalidate>
             {% csrf_token %}
             
          <!-- messages area -->
              {% if messages %}
                 {% for erm in messages %}
-                <h3 class="bg-danger text-white p-3 rounded-pill" style="text-align: center">
-                    Success: {{erm}} 
-                </h3>
-                {% endfor %}
+                <h5 class="bg-danger text-white p-3 rounded-pill" style="text-align: center">
+                    Error: {{erm}} 
+                </h5>
+                {% endfor %}               
             {% endif %}
                 
          <!--

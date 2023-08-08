@@ -3,18 +3,20 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-<h1 style="width: 50%; margin: auto; color: green;">Change User Data!!</h1> <br><br>
+<h1 style="width: 30%; margin: auto; color: green;">
+    Change User Data!!
+</h1> <br><br>
 
     
-        <form  method= 'POST' style="width: 50%; margin: auto;" novalidate>
+        <form  method= 'POST' style="width: 30%; margin: auto;" novalidate>
             {% csrf_token %}
              
          <!-- messages area -->
              {% if messages %}
                 {% for erm in messages %}
-                <h3 class="bg-primary text-white p-3 rounded-pill" style="text-align: center">
+                <h6 class="bg-primary text-white p-3 rounded-pill" style="text-align: center">
                     Updated: {{erm}} 
-                </h3>
+                </h6>
                 {% endfor %}
             {% endif %}
                 
@@ -28,7 +30,7 @@
             
             {% endif %}
         -->
-        
+
          <!-- get data forms -->
             <!-- {{forms|crispy}} -->
             {% for frm in forms %}
@@ -41,7 +43,7 @@
         </form>
 
         <!-- back to profile page -->
-        <p style="width: 50%; margin: auto; color: blue;">
+        <p style="width: 30%; margin: auto; color: blue;">
             <a class="btn btn-info" href="{% url 'profile' %}">
                 Back
             </a>

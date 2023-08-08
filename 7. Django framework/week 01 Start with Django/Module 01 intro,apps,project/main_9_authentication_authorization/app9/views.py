@@ -19,7 +19,7 @@ def signup(request):
             if form.is_valid():
                 messages.success(request, 'Account Created Successfully !!')
                 form.save(commit= True)
-                print(form.changed_data)
+               # print(form.changed_data)
         else:
             form = BuildInForm()
         return render(request, 'signup.html', {'forms': form}) 
@@ -45,7 +45,7 @@ def signin(request):
         else:
             # form = AuthenticationForm()
             form = UserAndPasswordForm()
-        messages.error(request, 'Username Or Password Does Not Matched !!')
+            messages.error(request, 'Username Or Password Does Not Matched !!')
         return render(request, 'signin.html', {'forms': form,})
     else:
         return redirect('profile') # if authenticated direct entry to profile page
@@ -81,7 +81,7 @@ def change_password(request):
                 return redirect('profile')
         else:
             form = PasswordChangeForm(user = request.user)
-        messages.error(request, 'Incorrect password entered !!')
+            messages.error(request, 'Incorrect password entered !!')
         return render(request, 'change_password.html', {'forms': form})
     else:
         return redirect('signin')
@@ -99,7 +99,7 @@ def change_password_without_old_password(request):
                 return redirect('profile')
         else:
             form = SetPasswordForm(user = request.user)
-        messages.error(request, 'Incorrect password entered !!')
+            messages.error(request, 'Incorrect password entered !!')
         return render(request, 'change_pass2.html', {'forms': form})
     else:
         return redirect('signin')
