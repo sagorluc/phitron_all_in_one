@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Show Books{% endblock title %}
+{% block content %}
+    <h1 style="text-align: center; padding-top: 15px; color: green;">
+        List/show_b Of Books !!
+    </h1><br><br>
+    <h5> {{msg}} </h5>
+    <div style="width: 30%; margin: auto;">
+
+        {% if datas %}
+            <table class="table  table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Book Name</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                    {% for book in datas  %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td><a href="{% url 'details_book' pk=book.id %}">
+                        {{book.book_name}}
+                    </a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <h1 style="text-align: center; color: red; font-size: 70px; ">
+            No Data Available
+        </h1>
+     {% endif %}
+        
+    </div>
+
+{% endblock content %}
+
+<!--
+     id=book.id 
+     {% url 'delete_book' book.id %}
+-->

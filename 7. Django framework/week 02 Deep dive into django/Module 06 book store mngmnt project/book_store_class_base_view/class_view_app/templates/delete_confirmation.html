@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Delete Confirmation{% endblock title %}
+{% block content %}
+<div style="width: 50%; margin: auto; color: green;">
+<h1>Are you sure you want to delete data ?</h1><br>
+ <form method="post">
+    <a href="{% url 'show_book' %}" class="btn btn-danger" type="submit">Yes</a>
+ </form>
+</div>
+{% endblock content %}
