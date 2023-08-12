@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}ComplateTask{% endblock title %}
+{% block content %}
+<h1 style="width: 50%; margin: auto; color: green; padding: 15px;">
+   Complated Task !!
+</h1>
+{% load crispy_forms_tags %}
+    <div style="width: 60%; margin: auto; text-align: center;" >
+        <table class="table  table-bordered">
+            <thead>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {% for data in complate_tasks %}
+                    <tr>
+                        <td> {{data.title}} </td>
+                        <td> {{data.description}} </td>
+                        <td> {% if data.status %}
+                                <span>Completed</span>
+                             {% else %}
+                                <span>Incomplete</span>
+                             {% endif %} 
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="{% url 'edit_tasks' id=data.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'delete_tasks' data.id %}">Delete</a>
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+{% endblock content %}

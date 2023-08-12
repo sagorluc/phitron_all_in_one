@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}ShowTask{% endblock title %}
+{% block content %}
+<h1 style="width: 50%; margin: auto; color: green; padding: 15px;">
+   Show Tasks !!
+</h1>
+{% load crispy_forms_tags %}
+    <div style="width: 70%; margin: auto; text-align: center;" >
+        <table class="table  table-bordered">
+            <thead>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {% for data in datas %}
+                    <tr>
+                        <td> {{data.title}} </td>
+                        <td> {{data.description}} </td>
+                        <td> Incomplete </td>
+                        <td>
+                            <a class="btn btn-warning" href="{% url 'edit_tasks' id=data.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'delete_tasks' data.id %}">Delete</a>
+                            <a class="btn btn-success" href="{% url 'pending' data.id %}">Complate</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+{% endblock content %}
