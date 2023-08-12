@@ -55,19 +55,13 @@ def edit_tasks(request, id):
     return render(request, 'edit_tasks.html', {'forms': frm})
 
 
-def pending(request, id):
+def complated_tasks(request, id):
     get_task_id = TaskModel.objects.get(pk = id)
     get_task_id.status = True
     get_task_id.save()
-    return redirect('complate_tasks')
-
-def complated_tasks(request):
-    complate_task = TaskModel.objects.filter(status = True)
-    
+    complate_task = TaskModel.objects.filter(status = True)   
     return render(request, 'complate_tasks.html', {'complate_tasks': complate_task})
     
-    
-
 
                         # Delete data/task
                     # ======================= 

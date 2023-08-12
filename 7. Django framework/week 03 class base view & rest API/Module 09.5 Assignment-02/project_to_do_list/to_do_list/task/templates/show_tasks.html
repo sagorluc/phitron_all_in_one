@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}ShowTask{% endblock title %}
 {% block content %}
-<h1 style="width: 50%; margin: auto; color: green; padding: 15px;">
+<h1 style="width: 30%; margin: auto; color: green; padding: 30px;">
    Show Tasks !!
 </h1>
 {% load crispy_forms_tags %}
@@ -22,12 +22,13 @@
                         <td>
                             <a class="btn btn-warning" href="{% url 'edit_tasks' id=data.id %}">Edit</a>
                             <a class="btn btn-danger" href="{% url 'delete_tasks' data.id %}">Delete</a>
-                            <a class="btn btn-success" href="{% url 'pending' data.id %}">Complate</a>
+                            <a class="btn btn-success" href="{% url 'complate_tasks' data.id %}">Complate</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a class="btn btn-primary" href="{% url 'home' %}">Create Task</a>
 </div>
 
 {% endblock content %}

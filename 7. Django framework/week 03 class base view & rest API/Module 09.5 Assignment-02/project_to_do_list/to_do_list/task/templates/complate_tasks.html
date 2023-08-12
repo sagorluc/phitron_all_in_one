@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}ComplateTask{% endblock title %}
+{% block title %}CompleteTask{% endblock title %}
 {% block content %}
-<h1 style="width: 50%; margin: auto; color: green; padding: 15px;">
-   Complated Task !!
+<h1 style="width: 30%; margin: auto; color: green; padding: 30px;">
+   Completed Task !!
 </h1>
 {% load crispy_forms_tags %}
     <div style="width: 60%; margin: auto; text-align: center;" >
@@ -32,4 +32,11 @@
                     </tr>
                 {% endfor %}
             </tbody>
+        </table>
+    </div>
+    <div  style="width: 50%; margin: auto; text-align: center; padding: 50px;">
+        <a class="btn btn-primary" href="{% url 'show_tasks'%}">Back</a>
+    </div>
+    
+    
 {% endblock content %}
