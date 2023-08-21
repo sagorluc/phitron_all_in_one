@@ -41,7 +41,7 @@ class UserRegisterFrom(UserCreationForm):
                   street_address = street_address,
                   city = city,
                   postal_code = postal_code,
-                  country = country,
+                  country = country
                   
                   )
                   
@@ -51,7 +51,7 @@ class UserRegisterFrom(UserCreationForm):
                   account_type = account_type,
                   birth_date = birth_date,
                   gender_type = gender_type, 
-                  account_no = 100000 + our_user.id,
+                  account_no = 100000 + our_user.id
                   )
                   
                   return our_user
