@@ -7,6 +7,7 @@ class TransactionModel(models.Model):
     
     # one account holder can have multiple transactions
     account = models.ForeignKey(BankAccountRegisterModel, related_name= 'transactions', on_delete= models.CASCADE)
+    # transfer = models.IntegerField(null= True)
     amount = models.DecimalField(max_digits= 12, decimal_places= 2)
     balance_after_transaction = models.DecimalField(max_digits= 12, decimal_places= 2, null= True)
     transaction_type = models.IntegerField(choices= TRANSACTIONS_TYPE )

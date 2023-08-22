@@ -8,10 +8,10 @@ from django.utils import timezone
 from datetime import datetime
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, View
-from transactions_app.forms import  DepositFrom, WithdrawalFrom, LoanRequestForm
+from transactions_app.forms import  DepositFrom, WithdrawalFrom, LoanRequestForm, TransferMoneyFrom
 from transactions_app.models import TransactionModel
 from django.contrib import messages
-from transactions_app.constants import DEPOSIT, WITHDRAWAL, LOAN, LOAN_PAID
+from transactions_app.constants import DEPOSIT, WITHDRAWAL, LOAN, LOAN_PAID, TRANSFER_MONEY
 from django.db.models import Sum
 
 # Create your views here.
@@ -97,6 +97,31 @@ class LoanRequestView(TransactionCreateMixin):
         
         return super().form_valid(form)
     
+class TransferMoneyView(TransactionCreateMixin):
+    template_name = 'transfer_money.html'
+    form_class = TransferMoneyFrom
+    title = 'Transfer Money'
+    success_url = reverse_lazy('transactions_app:transactions_report')
+    
+    def get_initial(self):
+        initial = {'transaction_type': TRANSFER_MONEY}
+        return initial
+    
+    def form_valid(self, form):
+        from_acc = self.request.user.account
+        trans_acc = form.cleaned_data.get('account_no')
+        trans_amount = form.cleaned_data.get('amount')
+        
+        from_acc.balance -= trans_amount
+        from_acc.save(update_fields = ['balance'])
+        
+        trans_acc.balance += trans_amount
+        trans_acc.save(update_fields = ['balance'])
+        
+        messages.success(self.request, f"Success Transfer {trans_amount} Tk.")
+        
+        return super().form_valid(form)
+    
     
 class TransactionReportView(LoginRequiredMixin, ListView):
     template_name = 'transactions_report.html'
@@ -115,10 +140,10 @@ class TransactionReportView(LoginRequiredMixin, ListView):
             end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
             
             # filtering the start_date and end_date
-            queryset = queryset.filter(timestamp__date__gte = start_date, timestamp__date__lte = end_date)
+            queryset = queryset.filter(timestamp__date__gte=start_date, timestamp__date__lte=end_date)
             
             # get the total sum from database
-            self.report_balance = TransactionModel.objects.filter(timestamp__date__gte = start_date, timestamp__date__lte = end_date).aggregate(sum('amount'))['amount__sum']
+            self.report_balance = TransactionModel.objects.filter(timestamp__date__gte=start_date, timestamp__date__lte=end_date).aggregate(Sum('amount'))['amount__sum']
         else:
             self.report_balance = self.request.user.account.balance
         return queryset.distinct()

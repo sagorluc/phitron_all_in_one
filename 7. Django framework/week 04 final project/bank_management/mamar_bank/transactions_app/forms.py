@@ -1,6 +1,7 @@
 from django import forms
 from transactions_app.models import TransactionModel
 
+
 # create a form for Deposit, Withdrawal, Loan, Loan Paid
 class TransactionFrom(forms.ModelForm):
     class Meta:
@@ -38,7 +39,7 @@ class WithdrawalFrom(TransactionFrom):
         withdrawal_account = self.account
         min_withdrawal = 100
         max_withdrawal = 20000
-        withdraw_balance = withdrawal_account.balance # Total amount
+        withdraw_balance = withdrawal_account.balance # Main Total amount
         withdrawal_amount = self.cleaned_data.get('amount')
         
         if withdrawal_amount < min_withdrawal:
@@ -52,6 +53,36 @@ class WithdrawalFrom(TransactionFrom):
                                         You can't withdrawal more then {withdrawal_account.balance} Tk.")
         
         return withdrawal_amount
+    
+    
+class TransferMoneyFrom(TransactionFrom):       
+        
+    def clean_amount(self):
+        user_acc = self.account  
+        trans_acc = self.cleaned_data.get('account_no') 
+        print(trans_acc)
+        transfer_amount = self.cleaned_data.get('amount')
+        max_transfer = 30000
+        min_transfer = 50
+        print(user_acc, transfer_amount, trans_acc, 'line 66')
+        
+               
+        if user_acc.balance < transfer_amount and user_acc.account_no != trans_acc:
+            raise forms.ValidationError(f"Insufficient fund.Your current balance is {user_acc.balance} Tk.\n \
+                But you want to transfer {transfer_amount} Tk.")
+        
+        if transfer_amount > max_transfer:
+            raise forms.ValidationError(f"You can't transfer more then {max_transfer} Tk in a day")
+        
+        if transfer_amount < min_transfer:
+            raise forms.ValidationError(f"Minimul transfer is {min_transfer} Tk.")
+        
+        
+        return transfer_amount, trans_acc
+    
+    
+        
+        
 
 class LoanRequestForm(TransactionFrom):
     def clean_amount(self):
