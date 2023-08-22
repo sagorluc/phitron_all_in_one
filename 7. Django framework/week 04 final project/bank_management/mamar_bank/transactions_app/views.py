@@ -13,6 +13,9 @@ from transactions_app.models import TransactionModel
 from django.contrib import messages
 from transactions_app.constants import DEPOSIT, WITHDRAWAL, LOAN, LOAN_PAID, TRANSFER_MONEY
 from django.db.models import Sum
+from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth import update_session_auth_hash
+from django import forms
 
 # Create your views here.
 class TransactionCreateMixin(LoginRequiredMixin, CreateView):
@@ -187,4 +190,19 @@ class LonaListView(LoginRequiredMixin, ListView):
     
      
     
-    
+def ChangePassword(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = SetPasswordForm(user= request.user, data= request.POST)
+            if form.is_valid():
+                form.save()
+                update_session_auth_hash(request, form.user)
+                return redirect('transactions_app:change_pass')
+        else:
+            form = SetPasswordForm(user= request.POST)
+            # raise forms.ValidationError(request, f"Password does't matched")
+        return render(request, 'change_pass.html', {'form': form})
+    else:
+        raise forms.ValidationError(request, "You are not authenticated user")
+        # return redirect('transactions_app:change_pass')
+         

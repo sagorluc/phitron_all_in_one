@@ -1,5 +1,7 @@
 from django import forms
 from transactions_app.models import TransactionModel
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 
 
 # create a form for Deposit, Withdrawal, Loan, Loan Paid
@@ -55,8 +57,7 @@ class WithdrawalFrom(TransactionFrom):
         return withdrawal_amount
     
     
-class TransferMoneyFrom(TransactionFrom):       
-        
+class TransferMoneyFrom(TransactionFrom):               
     def clean_amount(self):
         user_acc = self.account  
         trans_acc = self.cleaned_data.get('account_no') 
@@ -64,7 +65,7 @@ class TransferMoneyFrom(TransactionFrom):
         transfer_amount = self.cleaned_data.get('amount')
         max_transfer = 30000
         min_transfer = 50
-        print(user_acc, transfer_amount, trans_acc, 'line 66')
+        print(user_acc, transfer_amount,'line 66')
         
                
         if user_acc.balance < transfer_amount and user_acc.account_no != trans_acc:
@@ -79,12 +80,14 @@ class TransferMoneyFrom(TransactionFrom):
         
         
         return transfer_amount, trans_acc
-    
-    
-        
-        
+           
 
 class LoanRequestForm(TransactionFrom):
     def clean_amount(self):
         loan_amount = self.cleaned_data.get('amount')
         return loan_amount
+    
+class ChangePasswordForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ['password1', 'password2']
