@@ -19,7 +19,7 @@ from payment_order_app.models import OrderModel, PaymentModel, OrderProductModel
 from cart_app.models import CartItemModel
 from payment_order_app.forms import OrderForm
 from accounts_app.models import AccountModel
-from payment_order_app.payment_getway_ssl import sslcommerz_payment_gateway
+from payment_order_app.ssl import sslcommerz_payment_gateway
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CheckoutSuccessView(View):
@@ -103,7 +103,7 @@ class CheckoutFaildView(View):
                         # Place order function
                     # ==============================
 
-def place_order(request, total=0, quantity=0,):
+def place_order(request, total=0, quantity=0):
     current_user = request.user
     cart_items = CartItemModel.objects.filter(user=current_user)
     cart_count = cart_items.count()
@@ -118,6 +118,7 @@ def place_order(request, total=0, quantity=0,):
     tax = (2 * total)/100
     grand_total = total + tax
     print(current_user)
+    
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -127,6 +128,7 @@ def place_order(request, total=0, quantity=0,):
             form.instance.ip = request.META.get('REMOTE_ADDR')
             saved_instance = form.save()  # Save the form data to the database
             saved_instance_id = saved_instance.id 
+        
             
             # Generate order number
             yr = int(datetime.date.today().strftime('%Y'))
@@ -147,7 +149,8 @@ def place_order(request, total=0, quantity=0,):
                 'grand_total': grand_total,
             }
             return redirect(sslcommerz_payment_gateway(request,order_number, str(current_user.id), grand_total, form.instance.email))
-            
+            # return redirect('place_order')
+         
     else:
         return render(request, 'orders/payments.html')
     

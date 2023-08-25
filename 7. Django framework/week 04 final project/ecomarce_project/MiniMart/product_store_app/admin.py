@@ -1,5 +1,5 @@
 from django.contrib import admin
-from product_store_app.models import ProductModel
+from product_store_app.models import ProductModel, ReviewRating
 
 # Register your models here.
 class ProductAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class ProductAdmin(admin.ModelAdmin):
                     'prod_modify_date']
     
 admin.site.register(ProductModel, ProductAdmin)
+admin.site.register(ReviewRating)
